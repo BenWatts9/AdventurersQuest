@@ -61,6 +61,10 @@ namespace Quest
                 ShininessLevel = 5
             };
 
+
+
+            Prize adventurePrize = new Prize("woohoo");
+
             // Make a new "Adventurer" object using the "Adventurer" class
             Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, myHat);
 
@@ -104,6 +108,7 @@ namespace Quest
             bool playAgain = true;
             while(playAgain)
             {
+                adventurePrize.ShowPrize(theAdventurer);
                 Console.Write("Would you like to play agian? (Y/N)");
                 string playAgainAnswer = Console.ReadLine().ToLower();
                 if(playAgainAnswer == "y")
