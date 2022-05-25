@@ -9,6 +9,10 @@ namespace Quest
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
             Console.WriteLine("What is your name, adventurer?");
             string adventurerName = Console.ReadLine();
             // Create a few challenges for our Adventurer's quest
