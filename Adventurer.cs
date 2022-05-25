@@ -12,16 +12,18 @@ namespace Quest
         //  So it can be read and changed by any code in the application
         public int Awesomeness { get; set; }
 
+        public int CorrectChallengeCount {get;set;}
         private Robe ColorfulRobe{get;set;}
 
         private Hat AdventureHat{get;set;}
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe colorfulRobe, Hat adventureHat)
+        public Adventurer(string name, Robe colorfulRobe, Hat adventureHat, int correctCount)
         {
             Name = name;
             Awesomeness = 50;
             ColorfulRobe = colorfulRobe;
             AdventureHat = adventureHat;
+            CorrectChallengeCount = correctCount;
         }
 
         public string GetDescription()

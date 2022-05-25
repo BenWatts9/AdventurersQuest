@@ -10,6 +10,8 @@ namespace Quest
         static void Main(string[] args)
         {
 
+            int correctChallengeCount = 0;
+
             Console.WriteLine("What is your name, adventurer?");
             string adventurerName = Console.ReadLine();
             // Create a few challenges for our Adventurer's quest
@@ -74,7 +76,7 @@ namespace Quest
             Prize adventurePrize = new Prize("This is a prize");
 
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, myHat);
+            Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, myHat, correctChallengeCount);
 
 
             // A list of challenges for the Adventurer to complete
@@ -91,22 +93,24 @@ namespace Quest
                 nathanAge
             };
 
-            List<Challenge> actualChallenges = new List<Challenge>();
 
             // Loop through all the challenges and subject the Adventurer to them
 
             void startChallenges(){
                 Console.WriteLine(theAdventurer.GetDescription());
-                int count = 5;
-                while(count > 0){
-                    int randNum = new Random().Next(0,7);
+                int count = 0;
+                List<Challenge> actualChallenges = new List<Challenge>();
+                while(count < 5){
+                    int randNum = new Random().Next(0,8);
                     if(!(actualChallenges.Contains(challenges[randNum]))){
                         actualChallenges.Add(challenges[randNum]);
-                        count--;
+                        count++;
+                       
                     }
                 }
                 foreach (Challenge challenge in actualChallenges)
                 {
+                    Console.WriteLine(theAdventurer.Awesomeness);
                     challenge.RunChallenge(theAdventurer);
                 }
             }
@@ -130,10 +134,12 @@ namespace Quest
             while(playAgain)
             {
                 adventurePrize.ShowPrize(theAdventurer);
-                Console.Write("Would you like to play agian? (Y/N)");
+                Console.WriteLine("Would you like to play agian? (Y/N)");
                 string playAgainAnswer = Console.ReadLine().ToLower();
                 if(playAgainAnswer == "y")
                 {
+                    theAdventurer.Awesomeness += theAdventurer.CorrectChallengeCount*10;
+                    
                     startChallenges();
                 }
                 else

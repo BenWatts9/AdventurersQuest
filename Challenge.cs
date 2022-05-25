@@ -12,7 +12,8 @@ namespace Quest
         private int _correctAnswer;
         private int _awesomenessChange;
 
-
+        private int _correctChallengeCount{get;set;}
+        
         // A constructor for the Challenge
         // We can tell it's a constructor because it has the same name as the class 
         //   and it doesn't specify a return type
@@ -22,6 +23,7 @@ namespace Quest
             _text = text;
             _correctAnswer = correctAnswer;
             _awesomenessChange = awesomenessChange;
+            
         }
 
         // This method will take an Adventurer object and make that Adventurer perform the challenge
@@ -36,10 +38,12 @@ namespace Quest
             Console.WriteLine();
             if (isNumber && numAnswer == _correctAnswer)
             {
-                Console.WriteLine("Well Done!");
+                adventurer.CorrectChallengeCount++;
+                Console.WriteLine($"Well Done! You have answered {adventurer.CorrectChallengeCount} correctly.");
 
                 // Note how we access an Adventurer object's property
                 adventurer.Awesomeness += _awesomenessChange;
+                
             }
             else
             {
