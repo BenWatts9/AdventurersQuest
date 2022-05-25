@@ -55,8 +55,14 @@ namespace Quest
                 Colors = colors,
                 Length = 6
             };
+
+            Hat myHat = new Hat()
+            {
+                ShininessLevel = 5
+            };
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(adventurerName, myRobe);
+            Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, myHat);
 
 
             // A list of challenges for the Adventurer to complete
