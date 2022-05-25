@@ -36,6 +36,14 @@ namespace Quest
 4, 20
             );
 
+            Challenge forsbergAge = new Challenge("How old is Peter Forsberg", 48, 30);
+
+            Challenge leesAge = new Challenge("How old is Lee Jennings", 30, 10);
+
+            Challenge nathanAge = new Challenge("How old is Nathan Traczewki?", 28, 1);
+
+            
+
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
 
@@ -63,7 +71,7 @@ namespace Quest
 
 
 
-            Prize adventurePrize = new Prize("woohoo");
+            Prize adventurePrize = new Prize("This is a prize");
 
             // Make a new "Adventurer" object using the "Adventurer" class
             Adventurer theAdventurer = new Adventurer(adventurerName, myRobe, myHat);
@@ -77,14 +85,27 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                forsbergAge,
+                leesAge,
+                nathanAge
             };
+
+            List<Challenge> actualChallenges = new List<Challenge>();
 
             // Loop through all the challenges and subject the Adventurer to them
 
             void startChallenges(){
                 Console.WriteLine(theAdventurer.GetDescription());
-                foreach (Challenge challenge in challenges)
+                int count = 5;
+                while(count > 0){
+                    int randNum = new Random().Next(0,7);
+                    if(!(actualChallenges.Contains(challenges[randNum]))){
+                        actualChallenges.Add(challenges[randNum]);
+                        count--;
+                    }
+                }
+                foreach (Challenge challenge in actualChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
